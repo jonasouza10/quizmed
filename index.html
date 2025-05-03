@@ -37,27 +37,6 @@
       gap: 10px;
       width: 100%;
     }
-    .buttons button {
-      padding: 12px 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background-color: #42a5f5;
-      color: white;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: background-color 0.3s;
-      flex: 1;
-      min-width: 120px;
-      max-width: 200px;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .buttons button:hover {
-      background-color: #1e88e5;
-    }
     .option {
       display: block;
       margin: 10px auto;
@@ -84,24 +63,6 @@
     }
     .wrong {
       background-color: #f44336 !important;
-    }
-    #finalizarBtn {
-      margin: 20px auto;
-      padding: 12px 24px;
-      font-size: 1rem;
-      background-color: #ff9800;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-      width: 100%;
-      max-width: 200px;
-      text-align: center;
-      display: block;
-    }
-    #finalizarBtn:hover {
-      background-color: #fb8c00;
     }
     .container {
       max-width: 700px;
@@ -138,6 +99,18 @@
       color: #0d47a1;
       margin-bottom: 20px;
     }
+    .collapsible {
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+      overflow: hidden;
+    }
+    .collapsible-hidden {
+      max-height: 0;
+      opacity: 0;
+    }
+    .collapsible-visible {
+      max-height: 1000px; /* Adjust as needed */
+      opacity: 1;
+    }
     @media (max-width: 600px) {
       body {
         padding: 10px;
@@ -145,18 +118,7 @@
       h1 {
         font-size: 2rem;
       }
-      .buttons button {
-        min-width: 100%;
-        max-width: 100%;
-        padding: 10px;
-        font-size: 0.9rem;
-      }
       .option {
-        font-size: 0.9rem;
-        padding: 10px;
-        max-width: 100%;
-      }
-      #finalizarBtn {
         font-size: 0.9rem;
         padding: 10px;
         max-width: 100%;
@@ -175,15 +137,7 @@
       }
     }
     @media (max-width: 400px) {
-      .buttons button {
-        font-size: 0.8rem;
-        padding: 8px;
-      }
       .option {
-        font-size: 0.8rem;
-        padding: 8px;
-      }
-      #finalizarBtn {
         font-size: 0.8rem;
         padding: 8px;
       }
@@ -196,8 +150,7 @@
 
   <script type="text/babel">
     const quizzes = {
-	
-	 ECG: [
+     ECG: [
         { question: "O que representa a onda P no ECG?", options: ["Despolarização atrial", "Repouso ventricular", "Despolarização ventricular", "Repouso atrial"], answer: "Despolarização atrial" },
         { question: "O complexo QRS representa:", options: ["Contração atrial", "Contração ventricular", "Relaxamento ventricular", "Relaxamento atrial"], answer: "Contração ventricular" },
         { question: "O que é o intervalo QT?", options: ["Tempo entre a despolarização ventricular e repolarização", "Tempo entre as contrações atriais", "Tempo entre a despolarização atrial e ventricular", "Tempo entre a repolarização atrial e ventricular"], answer: "Tempo entre a despolarização ventricular e repolarização" },
@@ -829,7 +782,7 @@
     
 	
 	
-      BIOFISICA: [
+      BIOFÍSICA: [
     
         {"question":"Qual é a principal fonte de energia para os processos celulares?","options":["ATP","GTP","NADH","FADH2"],"answer":"ATP","reference":"Bushberg et al., Medical Biophysics, 3rd ed., Ch. 2"},
         {"question":"Qual é a unidade de dose absorvida em radiações ionizantes?","options":["Gray","Sievert","Becquerel","Curie"],"answer":"Gray","reference":"Bushberg et al., Medical Biophysics, 3rd ed., Ch. 15"},
@@ -1741,7 +1694,7 @@
   {"question": "Qual é a principal função do trofoblasto?", "options": ["Formação da placenta", "Nutrição inicial do embrião", "Proteção do embrião", "Formação do intestino"], "answer": "Formação da placenta", "reference": "Langman's Medical Embryology, 14th ed., Ch. 2"},
   {"question": "Qual estrutura dá origem às paratireoides?", "options": ["Endoderma", "Mesoderma", "Ectoderma", "Células da crista neural"], "answer": "Endoderma", "reference": "Langman's Medical Embryology, 14th ed., Ch. 17"}
       ],
-      BIOQUIMICA: [
+      BIOQUÍMICA: [
        
 	   {"question":"Qual é a principal fonte de energia para as células do corpo humano?","options":["Lipídios","Carboidratos","Proteínas","Ácidos nucleicos"],"answer":"Carboidratos","reference":"Baynes & Dominiczak, Bioquímica Médica, 5ª ed."},
         {"question":"Qual enzima catalisa a conversão de glicose em glicose-6-fosfato na glicólise?","options":["Hexoquinase","Fosfofrutoquinase","Piruvato quinase","Gliceraldeído-3-fosfato desidrogenase"],"answer":"Hexoquinase","reference":"Baynes & Dominiczak, Bioquímica Médica, 5ª ed."},
@@ -2033,7 +1986,7 @@
       ],
 	  
 	  
-	  GENETICA: [
+	  GENÉTICA: [
         {"question": "Qual é a principal molécula que carrega a informação genética?", "options": ["DNA", "RNA", "Proteína", "Lipídio"], "answer": "DNA", "reference": "Thompson & Thompson Genetics in Medicine, 8th ed., Ch. 2"},
         {"question": "Qual é a estrutura básica do DNA?", "options": ["Dupla hélice", "Hélice simples", "Cadeia linear", "Estrutura circular"], "answer": "Dupla hélice", "reference": "Thompson & Thompson Genetics in Medicine, 8th ed., Ch. 2"},
         {"question": "Qual base nitrogenada é exclusiva do DNA?", "options": ["Timina", "Uracila", "Citosina", "Guanina"], "answer": "Timina", "reference": "Thompson & Thompson Genetics in Medicine, 8th ed., Ch. 2"},
@@ -3196,7 +3149,7 @@
       ],
 	  
 	  
-	   SUPORTE_BASICO_VIDA: [
+	   SUPORTE_BÁSICO_VIDA: [
         {"question": "Qual é a primeira etapa ao abordar uma vítima em parada cardiorrespiratória?", "options": ["Verificar responsividade", "Iniciar compressões torácicas", "Aplicar desfibrilador", "Abrir vias aéreas"], "answer": "Verificar responsividade", "reference": "Brunner & Suddarth, 14th ed., Ch. 14"},
         {"question": "Qual é a frequência recomendada para compressões torácicas em adultos durante RCP?", "options": ["100-120 por minuto", "60-80 por minuto", "80-100 por minuto", "120-140 por minuto"], "answer": "100-120 por minuto", "reference": "Brunner & Suddarth, 14th ed., Ch. 14"},
         {"question": "Qual é a profundidade ideal das compressões torácicas em adultos?", "options": ["5-6 cm", "3-4 cm", "7-8 cm", "2-3 cm"], "answer": "5-6 cm", "reference": "Brunner & Suddarth, 14th ed., Ch. 14"},
@@ -3455,25 +3408,22 @@
 	  
 	  ],
 	  
-	  
-	  
     };
 
     const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
 
-    const QuizApp = () => {
-      const [topic, setTopic] = React.useState(null);
-      const [currentIndex, setCurrentIndex] = React.useState(() => parseInt(localStorage.getItem('quizIndex')) || 0);
-      const [correctAnswers, setCorrectAnswers] = React.useState(() => parseInt(localStorage.getItem('quizCorrect')) || 0);
+    const QuizSection = ({ topic, isExpanded }) => {
+      const [currentIndex, setCurrentIndex] = React.useState(() => parseInt(localStorage.getItem(`quizIndex_${topic}`)) || 0);
+      const [correctAnswers, setCorrectAnswers] = React.useState(() => parseInt(localStorage.getItem(`quizCorrect_${topic}`)) || 0);
       const [shuffledQuiz, setShuffledQuiz] = React.useState(() => {
-        const saved = localStorage.getItem('shuffledQuiz');
+        const saved = localStorage.getItem(`shuffledQuiz_${topic}`);
         if (saved) return JSON.parse(saved);
         return [];
       });
       const [gameState, setGameState] = React.useState('select');
       const [timeLeft, setTimeLeft] = React.useState(30);
       const [answers, setAnswers] = React.useState(() => {
-        const saved = localStorage.getItem('quizAnswers');
+        const saved = localStorage.getItem(`quizAnswers_${topic}`);
         return saved ? JSON.parse(saved) : [];
       });
       const [error, setError] = React.useState(null);
@@ -3481,10 +3431,10 @@
 
       React.useEffect(() => {
         try {
-          localStorage.setItem('quizIndex', currentIndex);
-          localStorage.setItem('quizCorrect', correctAnswers);
-          localStorage.setItem('shuffledQuiz', JSON.stringify(shuffledQuiz));
-          localStorage.setItem('quizAnswers', JSON.stringify(answers));
+          localStorage.setItem(`quizIndex_${topic}`, currentIndex);
+          localStorage.setItem(`quizCorrect_${topic}`, correctAnswers);
+          localStorage.setItem(`shuffledQuiz_${topic}`, JSON.stringify(shuffledQuiz));
+          localStorage.setItem(`quizAnswers_${topic}`, JSON.stringify(answers));
         } catch (err) {
           setError('Erro ao salvar progresso: ' + err.message);
         }
@@ -3505,13 +3455,12 @@
         return () => clearInterval(timer);
       }, [currentIndex, gameState]);
 
-      const startQuiz = (selectedTopic) => {
+      const startQuiz = () => {
         try {
-          const newQuiz = shuffleArray(quizzes[selectedTopic]).map(q => ({
+          const newQuiz = shuffleArray(quizzes[topic]).map(q => ({
             ...q,
             options: shuffleArray(q.options)
           }));
-          setTopic(selectedTopic);
           setShuffledQuiz(newQuiz);
           setCurrentIndex(0);
           setCorrectAnswers(0);
@@ -3519,10 +3468,10 @@
           setGameState('playing');
           setTimeLeft(30);
           setFeedback(null);
-          localStorage.removeItem('quizIndex');
-          localStorage.removeItem('quizCorrect');
-          localStorage.removeItem('shuffledQuiz');
-          localStorage.removeItem('quizAnswers');
+          localStorage.removeItem(`quizIndex_${topic}`);
+          localStorage.removeItem(`quizCorrect_${topic}`);
+          localStorage.removeItem(`shuffledQuiz_${topic}`);
+          localStorage.removeItem(`quizAnswers_${topic}`);
         } catch (err) {
           setError('Erro ao iniciar quiz: ' + err.message);
         }
@@ -3570,7 +3519,6 @@
 
       const resetGame = () => {
         try {
-          setTopic(null);
           setCurrentIndex(0);
           setCorrectAnswers(0);
           setShuffledQuiz([]);
@@ -3578,10 +3526,10 @@
           setTimeLeft(30);
           setAnswers([]);
           setFeedback(null);
-          localStorage.removeItem('quizIndex');
-          localStorage.removeItem('quizCorrect');
-          localStorage.removeItem('shuffledQuiz');
-          localStorage.removeItem('quizAnswers');
+          localStorage.removeItem(`quizIndex_${topic}`);
+          localStorage.removeItem(`quizCorrect_${topic}`);
+          localStorage.removeItem(`shuffledQuiz_${topic}`);
+          localStorage.removeItem(`quizAnswers_${topic}`);
         } catch (err) {
           setError('Erro ao reiniciar jogo: ' + err.message);
         }
@@ -3597,8 +3545,7 @@
 
       if (error) {
         return (
-          <div className="container">
-            <h1>Erro</h1>
+          <div className="p-4 bg-red-100 rounded mx-auto max-w-lg">
             <p className="text-red-500 text-center">{error}</p>
             <button
               onClick={resetGame}
@@ -3612,29 +3559,21 @@
 
       if (gameState === 'select') {
         return (
-          <div className="container">
-            <h1>PenseQuiz</h1>
-            <p className="text-blue-600 mb-4 text-center">Estude com paixão, conquiste com conhecimento!</p>
-            <div className="buttons">
-              {Object.keys(quizzes).map((subject) => (
-                <button
-                  key={subject}
-                  onClick={() => startQuiz(subject)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg shadow-md transition duration-300"
-                >
-                  {subject.replace('_', ' ')}
-                </button>
-              ))}
-            </div>
-            <p className="text-blue-600 mt-4 text-center">Provérbios 1:5 🕊️ "O sábio ouvirá e crescerá em conhecimento."</p>
+          <div className="p-4 mx-auto max-w-lg">
+            <button
+              onClick={startQuiz}
+              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg shadow-md transition duration-300"
+            >
+              Iniciar Quiz
+            </button>
           </div>
         );
       }
 
       if (gameState === 'review') {
         return (
-          <div className="container">
-            <h1>Revisão das Respostas</h1>
+          <div className="p-4 mx-auto max-w-lg">
+            <h2 className="text-lg text-blue-900 text-center">Revisão das Respostas</h2>
             {answers.map((ans, idx) => (
               <div key={idx} className="mb-4 p-4 bg-gray-100 rounded">
                 <p className="text-lg text-blue-900">{ans.question}</p>
@@ -3657,8 +3596,8 @@
 
       if (gameState === 'gameOver') {
         return (
-          <div className="container">
-            <h1>Fim do Jogo!</h1>
+          <div className="p-4 mx-auto max-w-lg">
+            <h2 className="text-lg text-blue-900 text-center">Fim do Quiz!</h2>
             <p className="text-xl mb-4 text-center">
               Você acertou {correctAnswers} de {shuffledQuiz.length} questões!
             </p>
@@ -3676,7 +3615,6 @@
                 Revisar Respostas
               </button>
             </div>
-            <p className="text-blue-600 mt-4 text-center">Provérbios 1:5 🕊️ "O sábio ouvirá e crescerá em conhecimento."</p>
           </div>
         );
       }
@@ -3685,19 +3623,7 @@
       const progress = ((currentIndex + 1) / shuffledQuiz.length) * 100;
 
       return (
-        <div className="container">
-          <h1>PenseQuiz</h1>
-          <div className="buttons">
-            {Object.keys(quizzes).map((subject) => (
-              <button
-                key={subject}
-                onClick={() => startQuiz(subject)}
-                className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg shadow-md transition duration-300"
-              >
-                {subject.replace('_', ' ')}
-              </button>
-            ))}
-          </div>
+        <div className="p-4 mx-auto max-w-lg">
           <div className="progress-bar">
             <div
               className="progress-bar-fill"
@@ -3731,12 +3657,50 @@
             ))}
           </div>
           <button
-            id="finalizarBtn"
+            id={`finalizarBtn_${topic}`}
             onClick={finalizarQuiz}
-            className="mt-4 bg-orange-500 hover:bg-orange-600 text-white py-2 rounded transition duration-300"
+            className="mt-4 bg-orange-500 hover:bg-orange-600 text-white py-2 rounded transition duration-300 w-full"
           >
             Finalizar Quiz
           </button>
+        </div>
+      );
+    };
+
+    const QuizApp = () => {
+      const [expandedTopic, setExpandedTopic] = React.useState(null);
+
+      const toggleExpand = (topic) => {
+        setExpandedTopic(expandedTopic === topic ? null : topic);
+      };
+
+      return (
+        <div className="container">
+          <h1>PenseQuiz</h1>
+          <p className="text-blue-600 mb-4 text-center">Estude com paixão, conquiste com conhecimento!</p>
+          <div className="buttons">
+            {Object.keys(quizzes).map((subject) => (
+              <div key={subject} className="w-full flex flex-col items-center">
+                <button
+                  onClick={() => toggleExpand(subject)}
+                  className="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg shadow-md transition duration-300 w-full max-w-xs flex justify-between items-center px-4"
+                >
+                  <span>{subject.replace('_', ' ')}</span>
+                  <span>{expandedTopic === subject ? '▲' : '▼'}</span>
+                </button>
+                <div
+                  className={`collapsible w-full flex justify-center ${
+                    expandedTopic === subject ? 'collapsible-visible' : 'collapsible-hidden'
+                  }`}
+                >
+                  <QuizSection
+                    topic={subject}
+                    isExpanded={expandedTopic === subject}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
           <p className="text-blue-600 mt-4 text-center">Provérbios 1:5 🕊️ "O sábio ouvirá e crescerá em conhecimento."</p>
         </div>
       );
